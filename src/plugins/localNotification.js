@@ -52,6 +52,23 @@ angular.module('ngCordova.plugins.localNotification', [])
       }
     }, false);
     return {
+      schedule: function (options, scope) {
+        var q = $q.defer();
+        scope = scope || null;
+        $window.plugin.notification.local.schedule(options, function (result) {
+          q.resolve(result);
+        }, scope);
+        return q.promise;
+      },
+      update: function (options, scope) {
+        var q = $q.defer();
+        scope = scope || null;
+        $window.plugin.notification.local.update(options, function (result) {
+          q.resolve(result);
+        }, scope);
+        return q.promise;
+      },
+
       add: function (options, scope) {
         var q = $q.defer();
         scope = scope || null;
