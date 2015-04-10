@@ -68,7 +68,14 @@ angular.module('ngCordova.plugins.localNotification', [])
         }, scope);
         return q.promise;
       },
-
+      get: function (id, scope) {
+        var q = $q.defer();
+        scope = scope || null;
+        $window.plugin.notification.local.get(id, function (result) {
+          q.resolve(result);
+        }, scope);
+        return q.promise;
+      },
       add: function (options, scope) {
         var q = $q.defer();
         scope = scope || null;
